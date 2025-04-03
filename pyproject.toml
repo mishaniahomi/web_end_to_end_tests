@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "web-test"
+version = "0.1.0"
+description = ""
+authors = ["homi <misha.homi@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.3.5"
+selenium = "^4.30.0"
+webdriver-manager = "^4.0.2"
+pytest-playwright = "^0.7.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
