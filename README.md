@@ -20,6 +20,8 @@ test_main_page.py::test_quest_should_be_input_username PASSED                   
 (web-test-py3.12) homi@homi-VirtualBox:~/myprojects/web-test$ 
 ```
 
+
+
 Скачать версию 
 ```
 wget https://chromedriver.storage.googleapis.com/130.0.6723.91/chromedriver_linux64.zip
