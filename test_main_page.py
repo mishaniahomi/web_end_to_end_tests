@@ -1,33 +1,51 @@
-from pages.main_page import MainPage
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import os
 from dotenv import load_dotenv
+from pages.login_page import LoginPage
+from pages.main_page import MainPage
+from pages.profile_page import ProfilePage
+import time
 
 dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
 
-def test_guest_can_go_to_login_page():
+def test_guest_login_page():
     cService = webdriver.ChromeService(executable_path=ChromeDriverManager().install())
     browser = webdriver.Chrome(service=cService)
     base_url = os.environ.get("BASE_URL")
-    link = base_url + "/login"
-    page = MainPage(
-        browser, link
-    )  # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
-    page.open()  # открываем страницу
-    page.go_to_login_page()  # выполняем метод страницы — переходим на страницу логина
+
+    link = base_url + "login"
+    login_page = LoginPage(browser, link)
+    login_page.open()
+    login_page.should_be_login_page()
 
 
-def test_quest_should_be_input_username():
+def test_quest_main_page():
     cService = webdriver.ChromeService(executable_path=ChromeDriverManager().install())
     browser = webdriver.Chrome(service=cService)
     base_url = os.environ.get("BASE_URL")
-    link = base_url + "/login"
-    page = MainPage(
-        browser, link
-    )  # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
-    page.open()  # открываем страницу
-    page.should_be_input_username()  # выполняем метод страницы — переходим на страницу логина
+
+    link = base_url + "login"
+    login_page = LoginPage(browser, link)
+    login_page.open()
+    login_page.go_to_profile_page()
+    profile_page = ProfilePage(browser, browser.current_url)
+    profile_page.go_to_main_page()
+    main_page = MainPage(browser, browser.current_url)
+    main_page.should_be_main_page()
+
+
+def test_quest_profile_page():
+    cService = webdriver.ChromeService(executable_path=ChromeDriverManager().install())
+    browser = webdriver.Chrome(service=cService)
+    base_url = os.environ.get("BASE_URL")
+
+    link = base_url + "login"
+    login_page = LoginPage(browser, link)
+    login_page.open()
+    login_page.go_to_profile_page()
+    profile_page = ProfilePage(browser, browser.current_url)
+    profile_page.should_be_profile_page()
