@@ -1,4 +1,4 @@
-from .base import BasePage
+from .base import Patient
 
 
-class ListPersonal(BasePage): ...
+class ListPersonal(Patient): ...
