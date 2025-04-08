@@ -7,27 +7,38 @@ from pages.main_page import MainPage
 from pages.profile_page import ProfilePage
 import time
 
+
 dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
 
-def test_guest_login_page():
-    cService = webdriver.ChromeService(executable_path=ChromeDriverManager().install())
-    browser = webdriver.Chrome(service=cService)
-    base_url = os.environ.get("BASE_URL")
+def setup_browser(func):
+    def wrapper():
+        cService = webdriver.ChromeService(
+            executable_path=ChromeDriverManager().install()
+        )
+        browser = webdriver.Chrome(service=cService)
+        try:
+            func(browser)
+        finally:
+            browser.quit()
 
+    return wrapper
+
+
+@setup_browser
+def test_guest_login_page(browser):
+    base_url = os.environ.get("BASE_URL")
     link = base_url + "login"
     login_page = LoginPage(browser, link)
     login_page.open()
     login_page.should_be_login_page()
 
 
-def test_quest_main_page():
-    cService = webdriver.ChromeService(executable_path=ChromeDriverManager().install())
-    browser = webdriver.Chrome(service=cService)
+@setup_browser
+def test_quest_main_page(browser):
     base_url = os.environ.get("BASE_URL")
-
     link = base_url + "login"
     login_page = LoginPage(browser, link)
     login_page.open()
@@ -38,11 +49,9 @@ def test_quest_main_page():
     main_page.should_be_main_page()
 
 
-def test_quest_profile_page():
-    cService = webdriver.ChromeService(executable_path=ChromeDriverManager().install())
-    browser = webdriver.Chrome(service=cService)
+@setup_browser
+def test_quest_profile_page(browser):
     base_url = os.environ.get("BASE_URL")
-
     link = base_url + "login"
     login_page = LoginPage(browser, link)
     login_page.open()
