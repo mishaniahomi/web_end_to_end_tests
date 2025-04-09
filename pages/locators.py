@@ -17,6 +17,16 @@ class ProfilePageLocators:
 
 class OtherPageLocators:
     PATIENT_LIST = (By.XPATH, "//a[@href='/patient/list/personal/']")
-    
+    BURGER = (By.XPATH, "//a[@data-toggle='sidebar'']")  # это три полоски меню
+    ASIDE = (By.XPATH, "//aside")
+    CLOSE_ASIDE = (
+        By.CSS_SELECTOR,
+        "aside.q-drawer.q-drawer--left.q-drawer--bordered.q-layout--prevent-focus.q-drawer--standard.fixed.q-drawer--on-top",
+    )
+    OPEN_ASIDE = (
+        By.CSS_SELECTOR,
+        "aside.q-drawer.q-drawer--left.q-drawer--bordered.q-drawer--standard.fixed.q-drawer--on-top",
+    )
 
 class PatientPageLocators: ...
+    

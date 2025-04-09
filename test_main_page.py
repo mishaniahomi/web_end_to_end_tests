@@ -37,6 +37,17 @@ def test_guest_login_page(browser):
 
 
 @setup_browser
+def test_quest_other_page(browser):
+    base_url = os.environ.get("BASE_URL")
+    link = base_url + "login"
+    login_page = LoginPage(browser, link)
+    login_page.open()
+    login_page.go_to_profile_page()
+    profile_page = ProfilePage(browser, browser.current_url)
+    profile_page.should_be_other_page()
+
+
+@setup_browser
 def test_quest_main_page(browser):
     base_url = os.environ.get("BASE_URL")
     link = base_url + "login"
