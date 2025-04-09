@@ -1,4 +1,4 @@
-from ..base_page import BasePage
+from ..other_page import OtherPage
 
 
-class Patient(BasePage): ...
+class Patient(OtherPage): ...

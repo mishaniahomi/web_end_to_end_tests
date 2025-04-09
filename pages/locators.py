@@ -13,3 +13,10 @@ class MainPageLocators:
 
 class ProfilePageLocators:
     MAIN_PAGE_LINK = (By.XPATH, "//a[@href='/' and text()='Главная страница']")
+
+
+class OtherPageLocators:
+    PATIENT_LIST = (By.XPATH, "//a[@href='/patient/list/personal/']")
+    
+
+class PatientPageLocators: ...

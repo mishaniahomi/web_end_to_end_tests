@@ -1,7 +1,8 @@
-from .base_page import BasePage
 from .locators import MainPageLocators
+from .other_page import OtherPage
 
-class MainPage(BasePage):
+
+class MainPage(OtherPage):
     def should_be_main_page(self):
         self.is_main_page()
 

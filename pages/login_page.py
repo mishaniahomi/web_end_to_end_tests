@@ -11,7 +11,7 @@ class LoginPage(BasePage):
     def should_be_login_page(self):
         self.should_be_input_username()
         self.should_be_input_password()
-        self.go_to_profile_page()
+        # self.go_to_profile_page()
 
     def should_be_input_username(self):
         assert self.is_element_present(*LoginPageLocators.LOGIN_INPUT_USERNAME), (
@@ -25,7 +25,6 @@ class LoginPage(BasePage):
 
     def go_to_profile_page(self):
         dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
-        print(f"Loading .env from: {dotenv_path}")
         if os.path.exists(dotenv_path):
             load_dotenv(dotenv_path)
         username = os.environ.get("LOGIN")
@@ -41,4 +40,6 @@ class LoginPage(BasePage):
         login_link = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
         login_link.click()
         WebDriverWait(self.browser, 10).until(EC.url_changes(self.browser.current_url))
-        assert self.browser.current_url == os.environ.get("PROFILE_LINK"), f"Expected URL: {os.environ.get("PROFILE_LINK")}, but got: {self.browser.current_url}"
+        assert self.browser.current_url == os.environ.get("PROFILE_LINK"), (
+            f"Expected URL: {os.environ.get('PROFILE_LINK')}, but got: {self.browser.current_url}"
+        )
