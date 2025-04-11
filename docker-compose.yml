@@ -1,0 +1,7 @@
+
+services:
+  chrome_testing:
+    build: .
+    valumes:
+      - .:/app/
+    command: pytest -v --tb=line test_main_page.py
