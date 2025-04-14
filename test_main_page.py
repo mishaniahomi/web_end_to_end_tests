@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.profile_page import ProfilePage
+from pages.patient.add_patient import AddPatient
 import time
 
 
@@ -69,3 +70,15 @@ def test_quest_profile_page(browser):
     login_page.go_to_profile_page()
     profile_page = ProfilePage(browser, browser.current_url)
     profile_page.should_be_profile_page()
+
+@setup_browser
+def test_quest_patient_add_page(browser):
+    base_url = os.environ.get("BASE_URL")
+    link = base_url + "login"
+    login_page = LoginPage(browser, link)
+    login_page.open()
+    login_page.go_to_profile_page()
+    profile_page = ProfilePage(browser, browser.current_url)
+    profile_page.go_to_patient_add_page()
+    patient_add_page = AddPatient(browser, browser.current_url)
+    patient_add_page.should_be_add_patient_page()

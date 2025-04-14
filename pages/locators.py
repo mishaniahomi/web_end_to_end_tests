@@ -20,8 +20,14 @@ class OtherPageLocators:
     PATIENT_ADD = (By.XPATH, "//a[@href='/patient/add/']")
     PATIENT_ADD_PHOTO = (By.XPATH, "//a[@href='/patient/add/photo/']")
     PATIENT_ADD_HISTO = (By.XPATH, "//a[@href='/patient/add/histo/']")
-    BURGER_OPEN = (By.XPATH, "//li[@class='dropdown dropdown-list-toggle']/a[@class='nav-link nav-link-lg sidebar-gone-show']")  # это три полоски меню
-    BURGER_CLOSE = (By.XPATH, "//div[@class='q-mini-drawer-hide absolute']/a[@class='nav-link nav-link-lg sidebar-gone-show']")
+    BURGER_OPEN = (
+        By.XPATH,
+        "//li[@class='dropdown dropdown-list-toggle']/a[@class='nav-link nav-link-lg sidebar-gone-show']",
+    )  # это три полоски меню
+    BURGER_CLOSE = (
+        By.XPATH,
+        "//div[@class='q-mini-drawer-hide absolute']/a[@class='nav-link nav-link-lg sidebar-gone-show']",
+    )
     ASIDE = (By.XPATH, "//aside")
     CLOSE_ASIDE = (
         By.CSS_SELECTOR,
@@ -32,5 +38,20 @@ class OtherPageLocators:
         "aside.q-drawer.q-drawer--left.q-drawer--bordered.q-drawer--standard.fixed.q-drawer--on-top",
     )
 
+
+class PatientFormLocator:
+    AGE_INPUT = (By.CSS_SELECTOR, "#age")
+    SEX_SELECT = (By.CSS_SELECTOR, "#sex")
+    ACCORDION = (By.CSS_SELECTOR, "#accordion")
+    SHOW_MORE_PATIENT_PARAMS = (
+        By.XPATH,
+        "//div[@class='accordion-body collapse show' and @id='more_patient_params']",
+    )
+    COMMENT = (By.CSS_SELECTOR, "#comment")
+
+
+class PatientAddPageLocator:
+    ADD_BUTTON = (By.CSS_SELECTOR, "#add_button")
+
+
 class PatientPageLocators: ...
-    
