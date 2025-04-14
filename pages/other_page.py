@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import os
 
+
 class OtherPage(BasePage):
     def should_be_other_page(self):
         self.should_be_aside()
@@ -51,31 +52,38 @@ class OtherPage(BasePage):
         self.click_to_element(OtherPageLocators.BURGER_OPEN)
         self.click_to_element(OtherPageLocators.PATIENT_LIST)
         WebDriverWait(self.browser, 10).until(EC.url_changes(self.browser.current_url))
-        assert self.browser.current_url == os.environ.get('BASE_URL')+os.environ.get("PATIENT_LINK"), (
-            f"Expected URL: {os.environ.get('BASE_URL')+os.environ.get('PATIENT_LINK')}, but got: {self.browser.current_url}"
+        assert self.browser.current_url == os.environ.get("BASE_URL") + os.environ.get(
+            "PATIENT_LINK"
+        ), (
+            f"Expected URL: {os.environ.get('BASE_URL') + os.environ.get('PATIENT_LINK')}, but got: {self.browser.current_url}"
         )
-
 
     def go_to_patient_add_page(self):
         self.click_to_element(OtherPageLocators.BURGER_OPEN)
         self.click_to_element(OtherPageLocators.PATIENT_ADD)
         WebDriverWait(self.browser, 10).until(EC.url_changes(self.browser.current_url))
-        assert self.browser.current_url == os.environ.get('BASE_URL')+os.environ.get("PATIENT_ADD_LINK"), (
-            f"Expected URL: {os.environ.get('BASE_URL')+os.environ.get('PATIENT_ADD_LINK')}, but got: {self.browser.current_url}"
+        assert self.browser.current_url == os.environ.get("BASE_URL") + os.environ.get(
+            "PATIENT_ADD_LINK"
+        ), (
+            f"Expected URL: {os.environ.get('BASE_URL') + os.environ.get('PATIENT_ADD_LINK')}, but got: {self.browser.current_url}"
         )
 
     def go_to_patient_add_photo_page(self):
         self.click_to_element(OtherPageLocators.BURGER_OPEN)
         self.click_to_element(OtherPageLocators.PATIENT_ADD_PHOTO)
         WebDriverWait(self.browser, 10).until(EC.url_changes(self.browser.current_url))
-        assert self.browser.current_url == os.environ.get('BASE_URL')+os.environ.get("PATIENT_ADD_PHOTO_LINK"), (
-            f"Expected URL: {os.environ.get('BASE_URL')+os.environ.get('PATIENT_ADD_PHOTO_LINK')}, but got: {self.browser.current_url}"
+        assert self.browser.current_url == os.environ.get("BASE_URL") + os.environ.get(
+            "PATIENT_ADD_PHOTO_LINK"
+        ), (
+            f"Expected URL: {os.environ.get('BASE_URL') + os.environ.get('PATIENT_ADD_PHOTO_LINK')}, but got: {self.browser.current_url}"
         )
 
     def go_to_patient_add_hist_page(self):
         self.click_to_element(OtherPageLocators.BURGER_OPEN)
         self.click_to_element(OtherPageLocators.PATIENT_ADD_HISTO)
         WebDriverWait(self.browser, 10).until(EC.url_changes(self.browser.current_url))
-        assert self.browser.current_url == os.environ.get('BASE_URL')+os.environ.get("PATIENT_ADD_HISTO_LINK"), (
-            f"Expected URL: {os.environ.get('BASE_URL')+os.environ.get('PATIENT_ADD_HISTO_LINK')}, but got: {self.browser.current_url}"
+        assert self.browser.current_url == os.environ.get("BASE_URL") + os.environ.get(
+            "PATIENT_ADD_HISTO_LINK"
+        ), (
+            f"Expected URL: {os.environ.get('BASE_URL') + os.environ.get('PATIENT_ADD_HISTO_LINK')}, but got: {self.browser.current_url}"
         )

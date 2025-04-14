@@ -7,11 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class LoginPage(BasePage):
-    """_summary_
-
-    Args:
-        BasePage (_type_): _description_
-    """
+    """Class for testing login page"""
 
     def should_be_login_page(self) -> None:
         """Testing the login page"""

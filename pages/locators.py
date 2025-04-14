@@ -47,6 +47,16 @@ class PatientFormLocator:
         By.XPATH,
         "//div[@class='accordion-body collapse show' and @id='more_patient_params']",
     )
+    HAIR_TYPE = (By.CSS_SELECTOR, "#hair_type")
+    SKIN = (By.CSS_SELECTOR, "#skin")
+    NEVUS_PLACES = (By.CSS_SELECTOR, "#nevus_places")
+    NEVUS_COUNT = (By.CSS_SELECTOR, "#nevus_count")
+    GENETIC = (By.CSS_SELECTOR, "#genetic")
+    IMMUNE = (By.CSS_SELECTOR, "#immune")
+    RED_DOTS = (By.CSS_SELECTOR, "#red_dots")
+    GROUP = (By.CSS_SELECTOR, "#group")
+    SUN_BURN = (By.CSS_SELECTOR, "#sun_burn")
+    NEVUS_SIZE = (By.CSS_SELECTOR, "#nevus_size")
     COMMENT = (By.CSS_SELECTOR, "#comment")
 
 
