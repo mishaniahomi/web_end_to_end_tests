@@ -91,6 +91,6 @@ class LoginPage(BasePage):
             load_dotenv(dotenv_path)
         self.enter_right_credentials()
         WebDriverWait(self.browser, 10).until(EC.url_changes(self.browser.current_url))
-        assert self.browser.current_url == os.environ.get("PROFILE_LINK"), (
-            f"Expected URL: {os.environ.get('PROFILE_LINK')}, but got: {self.browser.current_url}"
+        assert self.browser.current_url == os.environ.get('BASE_URL')+os.environ.get("PROFILE_LINK"), (
+            f"Expected URL: {os.environ.get('BASE_URL')+os.environ.get('PROFILE_LINK')}, but got: {self.browser.current_url}"
         )

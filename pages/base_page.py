@@ -1,5 +1,4 @@
-from selenium.common.exceptions import NoSuchElementException
-
+from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
 
 class BasePage:
     """Base class for all page classes, which contains basic functions"""
@@ -13,8 +12,13 @@ class BasePage:
         self.browser.get(self.url)
 
     def click_to_element(self, locator):
-        element = self.browser.find_element(*locator)
-        element.click()
+        try:
+            element = self.browser.find_element(*locator)
+            element.click()
+        except ElementNotInteractableException:
+            return False
+        return True
+
 
     def clear_element(self, locator):
         element = self.browser.find_element(*locator)    

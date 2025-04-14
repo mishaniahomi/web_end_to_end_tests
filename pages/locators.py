@@ -17,7 +17,11 @@ class ProfilePageLocators:
 
 class OtherPageLocators:
     PATIENT_LIST = (By.XPATH, "//a[@href='/patient/list/personal/']")
-    BURGER = (By.XPATH, "//a[@data-toggle='sidebar'']")  # это три полоски меню
+    PATIENT_ADD = (By.XPATH, "//a[@href='/patient/add/']")
+    PATIENT_ADD_PHOTO = (By.XPATH, "//a[@href='/patient/add/photo/']")
+    PATIENT_ADD_HISTO = (By.XPATH, "//a[@href='/patient/add/histo/']")
+    BURGER_OPEN = (By.XPATH, "//li[@class='dropdown dropdown-list-toggle']/a[@class='nav-link nav-link-lg sidebar-gone-show']")  # это три полоски меню
+    BURGER_CLOSE = (By.XPATH, "//div[@class='q-mini-drawer-hide absolute']/a[@class='nav-link nav-link-lg sidebar-gone-show']")
     ASIDE = (By.XPATH, "//aside")
     CLOSE_ASIDE = (
         By.CSS_SELECTOR,
