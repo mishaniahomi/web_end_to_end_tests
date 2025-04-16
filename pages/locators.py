@@ -23,7 +23,7 @@ class OtherPageLocators:
     BURGER_OPEN = (
         By.XPATH,
         "//li[@class='dropdown dropdown-list-toggle']/a[@class='nav-link nav-link-lg sidebar-gone-show']",
-    )  # это три полоски меню
+    )
     BURGER_CLOSE = (
         By.XPATH,
         "//div[@class='q-mini-drawer-hide absolute']/a[@class='nav-link nav-link-lg sidebar-gone-show']",
@@ -36,6 +36,14 @@ class OtherPageLocators:
     OPEN_ASIDE = (
         By.CSS_SELECTOR,
         "aside.q-drawer.q-drawer--left.q-drawer--bordered.q-drawer--standard.fixed.q-drawer--on-top",
+    )
+    DROPDOWN = (
+        By.XPATH,
+        "/html/body/div[1]/div/nav/ul[2]/li[@class='dropdown']",
+    )
+    DROPDOWN_SHOW = (
+        By.XPATH,
+        "/html/body/div[1]/div/nav/ul[2]/li[@class='dropdown show']",
     )
 
 

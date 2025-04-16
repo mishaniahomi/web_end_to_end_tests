@@ -13,12 +13,33 @@ class OtherPage(BasePage):
         self.should_be_link_to_patient_add()
         self.should_be_link_to_patient_add_photo()
         self.should_be_burger_open()
+        self.should_be_dropdown()
+        self.should_be_open_dropdown()
+
         # self.go_to_patient_list_page()
         # self.go_to_patient_add_page()
         # self.go_to_patient_add_photo_page()
         # self.go_to_patient_add_hist_page()
 
+    def should_be_open_dropdown(self):
+        """Checking for the presence of dropdown when open"""
+
+        self.click_to_element(OtherPageLocators.DROPDOWN)
+        assert self.is_element_present(*OtherPageLocators.DROPDOWN_SHOW), (
+            "dropdown show is not presented"
+        )
+    
+    
+
+    def should_be_dropdown(self):
+        """Checking for the presence of dropdown"""
+
+        assert self.is_element_present(*OtherPageLocators.DROPDOWN), (
+            "dropdown is not presented"
+        )
+
     def should_be_burger_open(self):
+        """Checking for the presence of burger when open"""
         assert self.is_element_present(*OtherPageLocators.BURGER_OPEN), (
             "BURGER_OPEN is not presented"
         )
