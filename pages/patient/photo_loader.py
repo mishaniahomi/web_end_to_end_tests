@@ -2,6 +2,8 @@ from .base import Patient
 from ..locators import PhotoLoaderLocator
 import os
 import time
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class PhotoLoader(Patient):
@@ -49,11 +51,21 @@ class PhotoLoader(Patient):
             "Add button is not presented"
         )
 
-    def load_file(self):
+    def load_file(self, image_name: str):
         current_dir = os.path.abspath(os.path.dirname(__file__))
         test_images_dir = os.path.abspath(
             os.path.join(current_dir, "../../test_images/")
         )
-        file_path = os.path.join(test_images_dir, "ISIC_0000002.jpg")
+        file_path = os.path.join(test_images_dir, image_name)
         element = self.browser.find_element(*PhotoLoaderLocator.PHOTO_LOADER)
         element.send_keys(file_path)
+
+    def add_file(self, file_name):
+        self.load_file(file_name)
+        comment_input = self.browser.find_element(*PhotoLoaderLocator.COMMENT)
+        comment_input.send_keys("test")
+        self.click_to_element(locator=PhotoLoaderLocator.ADD_BUTTON)
+        WebDriverWait(self.browser, 10).until(EC.url_changes(self.browser.current_url))
+        assert "/patient/profile/157" in self.browser.current_url, (
+            f"Expected URL: {os.environ.get('BASE_URL') + '/patient/profile/157'}, but got: {self.browser.current_url}"
+        )
