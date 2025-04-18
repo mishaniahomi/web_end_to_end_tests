@@ -1,5 +1,8 @@
 from ..locators import PatientAddPhotoLocators
 from .photo_loader import PhotoLoader
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import os
 
 class AddPhoto(PhotoLoader):
     def should_be_add_photo_page(self):
@@ -23,3 +26,8 @@ class AddPhoto(PhotoLoader):
         comment_input = self.browser.find_element(*PatientAddPhotoLocators.COMMENT)
         comment_input.send_keys("test")
         self.click_to_element(locator=PatientAddPhotoLocators.ADD_BUTTON)
+        WebDriverWait(self.browser, 10).until(EC.url_changes(self.browser.current_url))
+        assert "/patient/profile/157" in self.browser.current_url, (
+            f"Expected URL: {os.environ.get('BASE_URL') + "/patient/profile/157"}, but got: {self.browser.current_url}"
+        )
+        

@@ -91,4 +91,4 @@ class PhotoLoaderLocator:
 
 class ListPersonalLocators:
     PATIENT_ID = (By.CSS_SELECTOR, "#patient_id")
-    SEARCH_BUTTON = (By.CSS_Selector, 'button.btn.btn-primary.form-control')
+    SEARCH_BUTTON = (By.CSS_SELECTOR, 'button.btn.btn-primary.form-control')
