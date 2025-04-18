@@ -10,6 +10,7 @@ class ListPersonal(Patient):
 
         self.should_be_patient_id_input()
         self.should_be_search_button()
+        self.should_be_patient_add_button()
 
     def should_be_patient_id_input(self):
         """Checking for the presence of patient id input"""
@@ -24,3 +25,13 @@ class ListPersonal(Patient):
         assert self.is_element_present(*ListPersonalLocators.SEARCH_BUTTON), (
             "Search button is not presented"
         )
+
+    def should_be_patient_add_button(self):
+        """Checking for the presence of patient add button"""
+
+        assert self.is_element_present(*ListPersonalLocators.PATIENT_ADD_BUTTON), (
+            "Patient add button is not presented"
+        )
+
+    def go_to_patient_profile(self):
+        """"""

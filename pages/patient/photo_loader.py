@@ -57,4 +57,3 @@ class PhotoLoader(Patient):
         file_path = os.path.join(test_images_dir, "ISIC_0000002.jpg")
         element = self.browser.find_element(*PhotoLoaderLocator.PHOTO_LOADER)
         element.send_keys(file_path)
-        time.sleep(5)
