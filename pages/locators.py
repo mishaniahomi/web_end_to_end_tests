@@ -72,4 +72,23 @@ class PatientAddPageLocator:
     ADD_BUTTON = (By.CSS_SELECTOR, "#add_button")
 
 
-class PatientPageLocators: ...
+class PatientAddPhotoLocators:
+    PATIENT_ID = (By.CSS_SELECTOR, "#patient_id")
+    HISTO_ID = (By.CSS_SELECTOR, "#histo")
+    DIAGNOSIS_ID = (By.CSS_SELECTOR, "#diagnosis")
+    PHOTO_LOADER = (By.CSS_SELECTOR, "#photo_loader")
+    COMMENT = (By.CSS_SELECTOR, "#comment")
+    ADD_BUTTON = (By.CSS_SELECTOR, "#add_button")
+
+
+class PhotoLoaderLocator:
+    HISTO_ID = (By.CSS_SELECTOR, "#histo")
+    DIAGNOSIS_ID = (By.CSS_SELECTOR, "#diagnosis")
+    PHOTO_LOADER = (By.CSS_SELECTOR, "#photo_loader")
+    COMMENT = (By.CSS_SELECTOR, "#comment")
+    ADD_BUTTON = (By.CSS_SELECTOR, "#add_button")
+
+
+class ListPersonalLocators:
+    PATIENT_ID = (By.CSS_SELECTOR, "#patient_id")
+    SEARCH_BUTTON = (By.CSS_Selector, 'button.btn.btn-primary.form-control')

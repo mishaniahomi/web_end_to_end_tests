@@ -6,6 +6,7 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.profile_page import ProfilePage
 from pages.patient.add_patient import AddPatient
+from pages.patient.add_photo import AddPhoto
 import time
 
 
@@ -20,6 +21,7 @@ def setup_browser(func):
             executable_path=ChromeDriverManager().install()
         )
         browser = webdriver.Chrome(service=cService)
+        browser.implicitly_wait(os.environ.get("IMPLICITLY_WAIT"))
         try:
             func(browser)
         finally:
@@ -82,3 +84,17 @@ def test_quest_patient_add_page(browser):
     profile_page.go_to_patient_add_page()
     patient_add_page = AddPatient(browser, browser.current_url)
     patient_add_page.should_be_add_patient_page()
+
+
+@setup_browser
+def test_quest_patient_photo_add_page(browser):
+    base_url = os.environ.get("BASE_URL")
+    link = base_url + "login"
+    login_page = LoginPage(browser, link)
+    login_page.open()
+    login_page.go_to_profile_page()
+    profile_page = ProfilePage(browser, browser.current_url)
+    profile_page.go_to_patient_add_photo_page()
+    patient_add_page = AddPhoto(browser, browser.current_url)
+    patient_add_page.should_be_add_photo_page() #TODO: Тут доделать надо, чтобы ошибку давало
+
