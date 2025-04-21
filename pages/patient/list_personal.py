@@ -33,5 +33,24 @@ class ListPersonal(Patient):
             "Patient add button is not presented"
         )
 
-    def go_to_patient_profile(self):
-        """"""
+    def get_last_patient(self):
+        """Function for getting last patient"""
+
+        patient_list = self.browser.find_elements(
+            *ListPersonalLocators.PATIENT_CARD_LINKS
+        )
+        assert len(patient_list) > 0, "patient list is empty"
+        if patient_list:
+            href = patient_list[-1].get_attribute("href")
+            return href
+    
+    def go_to_last_patient(self):
+        patient_list = self.browser.find_elements(
+            *ListPersonalLocators.PATIENT_CARD_LINKS
+        )
+        assert len(patient_list) > 0, "patient list is empty"
+        if patient_list:
+            # self.click_to_element()
+            patient_list[-1].click()
+            # href = patient_list[-1].get_attribute("href")
+            # return href

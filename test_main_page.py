@@ -101,6 +101,7 @@ def test_quest_patient_profile(browser):
     patient_profile_page.open()
     patient_profile_page.should_be_patient_profile()
 
+
 @setup_browser
 def test_quest_nevus_add(browser):
     base_url = os.environ.get("BASE_URL")
@@ -108,10 +109,16 @@ def test_quest_nevus_add(browser):
     login_page = LoginPage(browser, link)
     login_page.open()
     login_page.go_to_profile_page()
-    profile_url = os.environ.get("BASE_URL") + os.environ.get("PATIENT_PROFILE") + "157/" + os.environ.get("PATIENT_ADD_NEVUS")
+    profile_url = (
+        os.environ.get("BASE_URL")
+        + os.environ.get("PATIENT_PROFILE")
+        + "157/"
+        + os.environ.get("PATIENT_ADD_NEVUS")
+    )
     add_nevus_page = AddNevus(browser, profile_url)
     add_nevus_page.open()
     add_nevus_page.should_be_add_nevus()
+
 
 @setup_browser
 def test_quest_patient_add_page(browser):
@@ -136,4 +143,19 @@ def test_quest_patient_photo_add_page(browser):
     profile_page = ProfilePage(browser, browser.current_url)
     profile_page.go_to_patient_add_photo_page()
     patient_add_page = AddPhoto(browser, browser.current_url)
-    patient_add_page.should_be_add_photo_page() 
+    patient_add_page.should_be_add_photo_page()
+
+
+@setup_browser
+def test_quest_patient_delete(browser):
+    base_url = os.environ.get("BASE_URL")
+    link = base_url + "login"
+    login_page = LoginPage(browser, link)
+    login_page.open()
+    login_page.go_to_profile_page()
+    profile_page = ProfilePage(browser, browser.current_url)
+    profile_page.go_to_patient_list_page()
+    patient_add_page = ListPersonal(browser, browser.current_url)
+    patient_add_page.go_to_last_patient()
+    patient_profile = PatientProfile(browser, browser.current_url)
+    patient_profile.delete_patient()

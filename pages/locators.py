@@ -93,10 +93,11 @@ class ListPersonalLocators:
     PATIENT_ID = (By.CSS_SELECTOR, "#patient_id")
     SEARCH_BUTTON = (By.CSS_SELECTOR, "button.btn.btn-primary.form-control")
     PATIENT_ADD_BUTTON = (By.CSS_SELECTOR, "a.btn.btn-success.form-control")
+    PATIENT_CARD_LINKS = (By.XPATH, "//a[@class='card-link'and text()=' Подробно... ']")
 
 
-class PatienrProfileLocators:
+class PatientProfileLocators:
     SAVE_BUTTON = (By.CSS_SELECTOR, "#save_button")
     GET_REPORT_BUTTON = (By.CSS_SELECTOR, "#get_report_button")
     NEVUS_ADD_BUTTON = (By.CSS_SELECTOR, "a.btn.btn-success.form-control")
-
+    DELETE_BUTTON = (By.CSS_SELECTOR, "#delete_button")
