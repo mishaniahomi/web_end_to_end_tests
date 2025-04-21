@@ -24,7 +24,6 @@ def setup_browser(func):
             executable_path=ChromeDriverManager().install()
         )
         browser = webdriver.Chrome(service=cService)
-        browser.implicitly_wait(os.environ.get("IMPLICITLY_WAIT"))
         try:
             func(browser)
         finally:
