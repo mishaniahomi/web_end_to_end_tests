@@ -13,6 +13,17 @@ class MainPageLocators:
 
 class ProfilePageLocators:
     MAIN_PAGE_LINK = (By.XPATH, "//a[@href='/' and text()='Главная страница']")
+    INPUT_USERNAME = (By.CSS_SELECTOR, "input#username")
+    INPUT_SURNAME = (By.CSS_SELECTOR, "input#surname")
+    INPUT_FIRSTNAME = (By.CSS_SELECTOR, "input#firstname")
+    INPUT_PATRONYMIC = (By.CSS_SELECTOR, "input#patronymic")
+    INPUT_WORK_PLACE = (By.CSS_SELECTOR, "input#work_place")
+    INPUT_JOB_TITLE = (By.CSS_SELECTOR, "input#job_title")
+    INPUT_LS_API_KEY = (By.CSS_SELECTOR, "input#ls_api_key")
+    INPUT_ROLE = (By.CSS_SELECTOR, "input#role")
+    DELETE_BUTTON = (By.CSS_SELECTOR, "button#delete_button")
+    PASSWORD_BUTTON = (By.CSS_SELECTOR, "button#password_button")
+    SAVE_BUTTON = (By.CSS_SELECTOR, "button#save_button")
 
 
 class OtherPageLocators:
